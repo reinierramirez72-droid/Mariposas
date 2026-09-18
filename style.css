@@ -40,6 +40,17 @@ body, html {
     100% { opacity: 1; }
 }
 
+/* CAPA GLOBAL DE MARIPOSAS */
+.capa-mariposas-global {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
 /* =======================================================
    EFECTO: 3 ONDAS DE AGUA ALEATORIAS
    ======================================================= */
@@ -64,19 +75,9 @@ body, html {
     opacity: 0;
 }
 
-.onda-1 {
-    animation: ondaAnimada1 8s ease-out infinite;
-}
-
-.onda-2 {
-    animation: ondaAnimada2 10s ease-out infinite;
-    animation-delay: 2.5s;
-}
-
-.onda-3 {
-    animation: ondaAnimada3 9s ease-out infinite;
-    animation-delay: 5s;
-}
+.onda-1 { animation: ondaAnimada1 8s ease-out infinite; }
+.onda-2 { animation: ondaAnimada2 10s ease-out infinite; animation-delay: 2.5s; }
+.onda-3 { animation: ondaAnimada3 9s ease-out infinite; animation-delay: 5s; }
 
 @keyframes ondaAnimada1 {
     0% { top: 25%; left: 20%; width: 0px; height: 0px; transform: translate(-50%, -50%); opacity: 0.8; }
@@ -221,12 +222,9 @@ body, html {
    ======================================================= */
 .contenedor-mariposa {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    width: 45px;
+    height: 45px;
     pointer-events: none;
-    z-index: 10;
 }
 
 .cuerpo-mariposa-der, .cuerpo-mariposa-izq {
@@ -305,61 +303,78 @@ body, html {
 @keyframes aleteoIzqDelantero { 0% { transform: rotate(-25deg) rotateY(0deg); } 100% { transform: rotate(-25deg) rotateY(-55deg); } }
 @keyframes aleteoIzqTrasero { 0% { transform: rotate(-20deg) rotateY(0deg) scaleX(0.8); } 100% { transform: rotate(-20deg) rotateY(-55deg) scaleX(0.8); } }
 
-/* RUTAS Y TRAYECTORIAS DESFASADAS */
-.m-der-1 .mariposa-perfil-derecha { animation: vueloDer1 14s ease-in-out infinite; }
-.m-der-2 .mariposa-perfil-derecha { animation: vueloDer2 18s ease-in-out infinite; animation-delay: 3s; }
-.m-der-3 .mariposa-perfil-derecha { animation: vueloDer3 16s ease-in-out infinite; animation-delay: 6s; }
-.m-der-4 .mariposa-perfil-derecha { animation: vueloDer4 20s ease-in-out infinite; animation-delay: 9s; }
+/* =======================================================
+   POSICIONES INICIALES INDIVIDUALES (FUERA DE PANTALLA)
+   ======================================================= */
 
-.m-izq-1 .mariposa-perfil-izquierda { animation: vueloIzq1 15s ease-in-out infinite; animation-delay: 1s; }
-.m-izq-2 .mariposa-perfil-izquierda { animation: vueloIzq2 19s ease-in-out infinite; animation-delay: 4s; }
-.m-izq-3 .mariposa-perfil-izquierda { animation: vueloIzq3 17s ease-in-out infinite; animation-delay: 7s; }
-.m-izq-4 .mariposa-perfil-izquierda { animation: vueloIzq4 21s ease-in-out infinite; animation-delay: 10s; }
+/* MARIPOSAS HACIA LA DERECHA (INICIAN A LA IZQUIERDA FUERA DE PANTALLA) */
+.m-der-1 { top: 75%; left: -20%; }
+.m-der-2 { top: 15%; left: -20%; }
+.m-der-3 { top: 45%; left: -20%; }
+.m-der-4 { top: 85%; left: -20%; }
 
+/* MARIPOSAS HACIA LA IZQUIERDA (INICIAN A LA DERECHA FUERA DE PANTALLA) */
+.m-izq-1 { top: 20%; left: 120%; }
+.m-izq-2 { top: 80%; left: 120%; }
+.m-izq-3 { top: 35%; left: 120%; }
+.m-izq-4 { top: 60%; left: 120%; }
+
+/* ASIGNACIÓN DE ANIMACIONES Y DELAYS */
+.m-der-1 { animation: vueloDer1 14s ease-in-out infinite; }
+.m-der-2 { animation: vueloDer2 18s ease-in-out infinite 3s; }
+.m-der-3 { animation: vueloDer3 16s ease-in-out infinite 6s; }
+.m-der-4 { animation: vueloDer4 20s ease-in-out infinite 9s; }
+
+.m-izq-1 { animation: vueloIzq1 15s ease-in-out infinite 1s; }
+.m-izq-2 { animation: vueloIzq2 19s ease-in-out infinite 4s; }
+.m-izq-3 { animation: vueloIzq3 17s ease-in-out infinite 7s; }
+.m-izq-4 { animation: vueloIzq4 21s ease-in-out infinite 10s; }
+
+/* ANIMACIONES DE VUELO */
 @keyframes vueloDer1 {
-    0% { top: 75%; left: -10%; transform: scale(0.8); }
+    0% { top: 75%; left: -20%; transform: scale(0.8); }
     50% { top: 55%; left: 45%; transform: scale(1); }
-    100% { top: 25%; left: 110%; transform: scale(0.85); }
+    100% { top: 25%; left: 120%; transform: scale(0.85); }
 }
 
 @keyframes vueloDer2 {
-    0% { top: 15%; left: -10%; transform: scale(0.9); }
+    0% { top: 15%; left: -20%; transform: scale(0.9); }
     50% { top: 35%; left: 50%; transform: scale(1.1); }
-    100% { top: 65%; left: 110%; transform: scale(0.75); }
+    100% { top: 65%; left: 120%; transform: scale(0.75); }
 }
 
 @keyframes vueloDer3 {
-    0% { top: 45%; left: -10%; transform: scale(0.75); }
+    0% { top: 45%; left: -20%; transform: scale(0.75); }
     50% { top: 20%; left: 40%; transform: scale(0.95); }
-    100% { top: 10%; left: 110%; transform: scale(0.8); }
+    100% { top: 10%; left: 120%; transform: scale(0.8); }
 }
 
 @keyframes vueloDer4 {
-    0% { top: 85%; left: -10%; transform: scale(1.05); }
+    0% { top: 85%; left: -20%; transform: scale(1.05); }
     50% { top: 70%; left: 60%; transform: scale(0.85); }
-    100% { top: 40%; left: 110%; transform: scale(1); }
+    100% { top: 40%; left: 120%; transform: scale(1); }
 }
 
 @keyframes vueloIzq1 {
-    0% { top: 20%; left: 110%; transform: scale(0.85); }
+    0% { top: 20%; left: 120%; transform: scale(0.85); }
     50% { top: 40%; left: 55%; transform: scale(1.05); }
-    100% { top: 70%; left: -10%; transform: scale(0.8); }
+    100% { top: 70%; left: -20%; transform: scale(0.8); }
 }
 
 @keyframes vueloIzq2 {
-    0% { top: 80%; left: 110%; transform: scale(0.95); }
+    0% { top: 80%; left: 120%; transform: scale(0.95); }
     50% { top: 60%; left: 40%; transform: scale(0.8); }
-    100% { top: 20%; left: -10%; transform: scale(1.1); }
+    100% { top: 20%; left: -20%; transform: scale(1.1); }
 }
 
 @keyframes vueloIzq3 {
-    0% { top: 35%; left: 110%; transform: scale(0.7); }
+    0% { top: 35%; left: 120%; transform: scale(0.7); }
     50% { top: 15%; left: 60%; transform: scale(0.9); }
-    100% { top: 45%; left: -10%; transform: scale(0.75); }
+    100% { top: 45%; left: -20%; transform: scale(0.75); }
 }
 
 @keyframes vueloIzq4 {
-    0% { top: 60%; left: 110%; transform: scale(1); }
+    0% { top: 60%; left: 120%; transform: scale(1); }
     50% { top: 80%; left: 50%; transform: scale(1.15); }
-    100% { top: 85%; left:-10%; transform: scale(0.85); }
+    100% { top: 85%; left: -20%; transform: scale(0.85); }
 }
