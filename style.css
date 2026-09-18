@@ -1,0 +1,245 @@
+/* RESET GENERAL */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL: DEGRADADO DE MORADO OSCURO #4c007d A MÁS CLARO */
+.xat-space-escenario {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* El degradado empieza abajo/centro en el morado oscuro #4c007d y sube a tonos más claros */
+    background: linear-gradient(180deg, #b258dd 0%, #8327b3 35%, #5c0f8b 70%, #4c007d 100%);
+    background-size: 100% 150%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+    
+    animation: xatFadeInSpace 2s ease-out forwards, movimientoDegradado 14s ease-in-out infinite alternate;
+    opacity: 0;
+}
+
+@keyframes movimientoDegradado {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+@keyframes xatFadeInSpace {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* CONTENEDOR CENTRAL */
+.contenedor-nombre {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NOMBRE GABY CON BRILLO RECORTADO ESTRICTAMENTE DENTRO DE LAS LETRAS */
+.texto-caligrafico-glow {
+    font-family: 'Great Vibes', cursive, serif;
+    font-size: 13rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 10px 40px;
+    line-height: 1.1;
+    user-select: none;
+    display: block;
+    position: relative;
+    
+    /* Gradiente blanco y crema que simula la ráfaga de luz */
+    background: linear-gradient(
+        110deg, 
+        #ffffff 0%, 
+        #ffffff 35%, 
+        #ffffff 40%, 
+        #ffe8fd 50%, 
+        #ffffff 60%, 
+        #ffffff 65%, 
+        #ffffff 100%
+    );
+    background-size: 200% auto;
+    
+    /* MÁSCARA CLAVE: Recorta todo el fondo y el destello a la silueta exacta de las letras */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animación del paso de luz destellante */
+    animation: ráfagaLuzGaby 8s linear infinite;
+    
+    /* Sombra exterior neón para destacar el contorno sin salirse */
+    filter: 
+        drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) 
+        drop-shadow(0 0 20px rgba(220, 150, 240, 0.5));
+}
+
+@keyframes ráfagaLuzGaby {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+/* DIVISOR CON CORAZÓN */
+.xat-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    opacity: 0.85;
+}
+
+.xat-divider::before, .xat-divider::after {
+    content: "";
+    width: 90px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, rgba(255, 253, 250, 0.85) 50%, transparent);
+}
+
+.xat-heart {
+    width: 6px;
+    height: 6px;
+    background-color: #fffdfa;
+    position: relative;
+    transform: rotate(45deg);
+    margin: 0 12px;
+    box-shadow: 0 0 8px rgba(255, 253, 250, 0.8);
+}
+
+.xat-heart::before, .xat-heart::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #fffdfa;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.xat-heart::before { top: -3px; left: 0; }
+.xat-heart::after { top: 0; left: -3px; }
+
+/* REPRODUCTOR CRISTAL EN TONO BLANCO TRANSLÚCIDO */
+.reproductor-lindo {
+    background: rgba(255, 253, 250, 0.18);
+    border: 1px solid rgba(255, 253, 250, 0.4);
+    padding: 10px 24px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.reproductor-lindo:hover {
+    background: rgba(255, 253, 250, 0.32);
+    transform: scale(1.03);
+}
+
+.reproductor-lindo i { 
+    color: #fffdfa; 
+    font-size: 0.85rem; 
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.reproductor-lindo span { 
+    color: #fffdfa; 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    letter-spacing: 1px; 
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* EFECTO CÍRCULO ONDA SUTIL */
+.contenedor-ondas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.onda-unica {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 253, 250, 0.6);
+    box-shadow: 
+        0 0 10px rgba(255, 253, 250, 0.25), 
+        inset 0 0 10px rgba(255, 253, 250, 0.15);
+    animation: ondaLentaAleatoria 9s ease-out infinite;
+    opacity: 0;
+}
+
+@keyframes ondaLentaAleatoria {
+    0% { top: 25%; left: 20%; width: 0px; height: 0px; transform: translate(-50%, -50%); opacity: 0.7; border-width: 1.5px; }
+    20% { top: 25%; left: 20%; width: 240px; height: 240px; transform: translate(-50%, -50%); opacity: 0; }
+    21% { top: 75%; left: 80%; width: 0px; height: 0px; transform: translate(-50%, -50%); opacity: 0; }
+    25% { opacity: 0.7; border-width: 1.5px; }
+    45% { top: 75%; left: 80%; width: 240px; height: 240px; transform: translate(-50%, -50%); opacity: 0; }
+    46% { top: 30%; left: 70%; width: 0px; height: 0px; transform: translate(-50%, -50%); opacity: 0; }
+    50% { opacity: 0.7; border-width: 1.5px; }
+    70% { top: 30%; left: 70%; width: 240px; height: 240px; transform: translate(-50%, -50%); opacity: 0; }
+    71% { top: 80%; left: 30%; width: 0px; height: 0px; transform: translate(-50%, -50%); opacity: 0; }
+    75% { opacity: 0.7; border-width: 1.5px; }
+    95% { top: 80%; left: 30%; width: 240px; height: 240px; transform: translate(-50%, -50%); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* MARIPOSAS */
+.contenedor-mariposa { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 10; }
+.cuerpo-mariposa-der, .cuerpo-mariposa-izq { position: absolute; width: 7px; height: 32px; background: radial-gradient(circle at center, #fffdfa 0%, #f7edf8 70%, #e2d1e5 100%); border-radius: 10px / 16px; box-shadow: 0 0 8px rgba(255, 253, 250, 0.8); z-index: 5; }
+.antena { position: absolute; width: 12px; height: 14px; border-top: 1.5px solid #fffdfa; border-radius: 0 100% 0 0; top: -10px; box-shadow: 0 -2px 4px rgba(255, 253, 250, 0.6); }
+.ala { position: absolute; width: 30px; height: 42px; border: 1px solid rgba(255, 253, 250, 0.85); box-shadow: 0 0 10px rgba(255, 253, 250, 0.5); }
+
+/* MARIPOSA DERECHA */
+.mariposa-izq-der .mariposa-perfil-derecha { position: absolute; width: 45px; height: 45px; transform-style: preserve-3d; animation: vueloHaciaDerecha 15s ease-in-out infinite; }
+.cuerpo-mariposa-der { right: 12px; top: 6px; transform: rotate(32deg); }
+.antena-delantera-der { right: -2px; border-right: 1.5px solid #fffdfa; transform: rotate(15deg); }
+.antena-trasera-der { right: 2px; top: -8px; border-right: 1.5px solid #fffdfa; opacity: 0.6; transform: rotate(30deg) scale(0.85); }
+.ala-trasera-der, .ala-delantera-der { background: linear-gradient(225deg, rgba(255, 253, 250, 0.9) 0%, rgba(235, 195, 245, 0.6) 60%, rgba(180, 120, 200, 0.4) 100%); border-radius: 30% 70% 30% 70%; transform-origin: right center; }
+.ala-trasera-der { right: 16px; top: -2px; opacity: 0.55; animation: aleteoDerTrasero 0.38s ease-in-out infinite alternate; }
+.ala-delantera-der { right: 17px; top: -4px; opacity: 0.95; animation: aleteoDerDelantero 0.38s ease-in-out infinite alternate; }
+
+@keyframes aleteoDerDelantero { 0% { transform: rotate(25deg) rotateY(0deg); } 100% { transform: rotate(25deg) rotateY(55deg); } }
+@keyframes aleteoDerTrasero { 0% { transform: rotate(20deg) rotateY(0deg) scaleX(0.8); } 100% { transform: rotate(20deg) rotateY(50deg) scaleX(0.8); } }
+@keyframes vueloHaciaDerecha { 0% { top: 75%; left: -10%; transform: scale(0.85); } 30% { top: 50%; left: 30%; transform: scale(1); } 60% { top: 55%; left: 60%; transform: scale(0.95); } 85% { top: 25%; left: 85%; transform: scale(1.1); } 100% { top: -10%; left: 110%; transform: scale(0.8); } }
+
+/* MARIPOSA IZQUIERDA */
+.mariposa-der-izq .mariposa-perfil-izquierda { position: absolute; width: 45px; height: 45px; transform-style: preserve-3d; animation: vueloHaciaIzquierda 16s ease-in-out infinite; animation-delay: 2s; }
+.cuerpo-mariposa-izq { left: 12px; top: 6px; transform: rotate(-32deg); }
+.antena-delantera-izq { left: -2px; border-left: 1.5px solid #fffdfa; transform: rotate(-15deg); }
+.antena-trasera-izq { left: 2px; top: -8px; border-left: 1.5px solid #fffdfa; opacity: 0.6; transform: rotate(-30deg) scale(0.85); }
+.ala-trasera-izq, .ala-delantera-izq { background: linear-gradient(135deg, rgba(255, 253, 250, 0.9) 0%, rgba(235, 195, 245, 0.6) 60%, rgba(180, 120, 200, 0.4) 100%); border-radius: 70% 30% 70% 30%; transform-origin: left center; }
+.ala-trasera-izq { left: 16px; top: -2px; opacity: 0.55; animation: aleteoIzqTrasero 0.38s ease-in-out infinite alternate; }
+.ala-delantera-izq { left: 17px; top: -4px; opacity: 0.95; animation: aleteoIzqDelantero 0.38s ease-in-out infinite alternate; }
+
+@keyframes aleteoIzqDelantero { 0% { transform: rotate(-25deg) rotateY(0deg); } 100% { transform: rotate(-25deg) rotateY(-55deg); } }
+@keyframes aleteoIzqTrasero { 0% { transform: rotate(-20deg) rotateY(0deg) scaleX(0.8); } 100% { transform: rotate(-20deg) rotateY(-55deg) scaleX(0.8); } }
+@keyframes vueloHaciaIzquierda { 0% { top: 20%; left: 110%; transform: scale(0.85); } 30% { top: 35%; left: 70%; transform: scale(1.05); } 60% { top: 65%; left: 35%; transform: scale(0.9); } 85% { top: 80%; left: 15%; transform: scale(1); } 100% { top: 110%; left: -10%; transform: scale(0.8); } }
