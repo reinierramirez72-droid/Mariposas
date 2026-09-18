@@ -3,106 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espacio de Gaby - Morado Crema</title>
-    <!-- Fuentes elegantes -->
+    <title>Espacio de Gaby</title>
+    <!-- Tipografías de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Hoja de estilos CSS -->
+    <!-- Estilos CSS externos -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="xat-space-escenario">
+    <div class="xat-space-escenario" onclick="reproducirAudio()">
 
-        <!-- UN SOLO CÍRCULO QUE SALE ALEATORIAMENTE -->
+        <!-- ==========================================
+             EFECTO DE ONDAS DE AGUA (3 ONDAS ALEATORIAS)
+             ========================================== -->
         <div class="contenedor-ondas">
-            <div class="onda-unica"></div>
+            <div class="onda-agua onda-1"></div>
+            <div class="onda-agua onda-2"></div>
+            <div class="onda-agua onda-3"></div>
         </div>
 
-        <!-- PRIMERA MARIPOSA (Vuela de Izquierda a Derecha) -->
-        <div class="contenedor-mariposa mariposa-izq-der">
+        <!-- ==========================================
+             SISTEMA DE 8 MARIPOSAS (4 DERECHA, 4 IZQUIERDA)
+             ========================================== -->
+             
+        <!-- MARIPOSAS DE IZQUIERDA A DERECHA (4 MARIPOSAS) -->
+        <div class="contenedor-mariposa mariposa-izq-der m-der-1">
             <div class="mariposa-perfil-derecha">
-                <div class="cuerpo-mariposa-der">
-                    <div class="antena antena-trasera-der"></div>
-                    <div class="antena antena-delantera-der"></div>
-                </div>
-                <div class="ala ala-trasera-der"></div>
                 <div class="ala ala-delantera-der"></div>
-            </div>
-        </div>
-
-        <!-- SEGUNDA MARIPOSA (Vuela de Derecha a Izquierda - Corregida) -->
-        <div class="contenedor-mariposa mariposa-der-izq">
-            <div class="mariposa-perfil-izquierda">
-                <div class="cuerpo-mariposa-izq">
-                    <div class="antena antena-trasera-izq"></div>
-                    <div class="antena antena-delantera-izq"></div>
+                <div class="ala ala-trasera-der"></div>
+                <div class="cuerpo-mariposa-der">
+                    <div class="antena antena-delantera-der"></div>
+                    <div class="antena antena-trasera-der"></div>
                 </div>
-                <div class="ala ala-trasera-izq"></div>
-                <div class="ala ala-delantera-izq"></div>
             </div>
         </div>
 
-        <!-- BLOQUE CENTRAL -->
+        <div class="contenedor-mariposa mariposa-izq-der m-der-2">
+            <div class="mariposa-perfil-derecha">
+                <div class="ala ala-delantera-der"></div>
+                <div class="ala ala-trasera-der"></div>
+                <div class="cuerpo-mariposa-der">
+                    <div class="antena antena-delantera-der"></div>
+                    <div class="antena antena-trasera-der"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-mariposa mariposa-izq-der m-der-3">
+            <div class="mariposa-perfil-derecha">
+                <div class="ala ala-delantera-der"></div>
+                <div class="ala ala-trasera-der"></div>
+                <div class="cuerpo-mariposa-der">
+                    <div class="antena antena-delantera-der"></div>
+                    <div class="antena antena-trasera-der"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-mariposa mariposa-izq-der m-der-4">
+            <div class="mariposa-perfil-derecha">
+                <div class="ala ala-delantera-der"></div>
+                <div class="ala ala-trasera-der"></div>
+                <div class="cuerpo-mariposa-der">
+                    <div class="antena antena-delantera-der"></div>
+                    <div class="antena antena-trasera-der"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARIPOSAS DE DERECHA A IZQUIERDA (4 MARIPOSAS) -->
+        <div class="contenedor-mariposa mariposa-der-izq m-izq-1">
+            <div class="mariposa-perfil-izquierda">
+                <div class="ala ala-delantera-izq"></div>
+                <div class="ala ala-trasera-izq"></div>
+                <div class="cuerpo-mariposa-izq">
+                    <div class="antena antena-delantera-izq"></div>
+                    <div class="antena antena-trasera-izq"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-mariposa mariposa-der-izq m-izq-2">
+            <div class="mariposa-perfil-izquierda">
+                <div class="ala ala-delantera-izq"></div>
+                <div class="ala ala-trasera-izq"></div>
+                <div class="cuerpo-mariposa-izq">
+                    <div class="antena antena-delantera-izq"></div>
+                    <div class="antena antena-trasera-izq"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-mariposa mariposa-der-izq m-izq-3">
+            <div class="mariposa-perfil-izquierda">
+                <div class="ala ala-delantera-izq"></div>
+                <div class="ala ala-trasera-izq"></div>
+                <div class="cuerpo-mariposa-izq">
+                    <div class="antena antena-delantera-izq"></div>
+                    <div class="antena antena-trasera-izq"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-mariposa mariposa-der-izq m-izq-4">
+            <div class="mariposa-perfil-izquierda">
+                <div class="ala ala-delantera-izq"></div>
+                <div class="ala ala-trasera-izq"></div>
+                <div class="cuerpo-mariposa-izq">
+                    <div class="antena antena-delantera-izq"></div>
+                    <div class="antena antena-trasera-izq"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOQUE CENTRAL CON EL NOMBRE -->
         <div class="contenedor-nombre">
             <h1 class="texto-caligrafico-glow">Gaby</h1>
             
             <div class="xat-divider">
                 <div class="xat-heart"></div>
             </div>
-            
-            <!-- Reproductor estilo cristal -->
-            <div class="reproductor-bajo-nombre">
-                <button id="btn-reproductor" class="reproductor-lindo">
-                    <i id="icono-reproductor" class="fas fa-play"></i>
-                    <span id="texto-reproductor">MÚSICA</span>
-                </button>
-            </div>
+
+            <!-- REPRODUCTOR -->
+            <button class="reproductor-lindo" onclick="toggleAudio(event)">
+                <i id="icono-play" class="fa-solid fa-play"></i>
+                <span id="texto-reproductor">MÚSICA</span>
+            </button>
         </div>
 
-        <!-- AUDIO DE FONDO -->
-        <audio id="musica-fondo" src="cancion.mp3" loop></audio>
+        <!-- AUDIO NATIVO -->
+        <audio id="audio-bg" src="cancion.mp3" loop></audio>
 
     </div>
 
+    <!-- SCRIPT DEL REPRODUCTOR -->
     <script>
-        // Lógica del reproductor
-        const musica = document.getElementById('musica-fondo');
-        const boton = document.getElementById('btn-reproductor');
-        const icono = document.getElementById('icono-reproductor');
+        const audio = document.getElementById('audio-bg');
+        const iconoPlay = document.getElementById('icono-play');
+        const textoReproductor = document.getElementById('texto-reproductor');
 
-        function alternarMusica() {
-            if (musica.paused) {
-                musica.play().then(() => {
-                    icono.className = 'fas fa-pause';
-                }).catch(error => console.log("Interacción requerida"));
-            } else {
-                musica.pause();
-                icono.className = 'fas fa-play';
+        function reproducirAudio() {
+            if (audio.paused) {
+                audio.play().then(() => actualizarBoton(true)).catch(() => {});
             }
         }
 
-        boton.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            alternarMusica();
-        });
+        function toggleAudio(event) {
+            event.stopPropagation();
+            if (audio.paused) {
+                audio.play().then(() => actualizarBoton(true));
+            } else {
+                audio.pause();
+                actualizarBoton(false);
+            }
+        }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            musica.play().then(() => {
-                icono.className = 'fas fa-pause';
-            }).catch(() => {
-                const activarConInteraccion = () => {
-                    musica.play().then(() => {
-                        icono.className = 'fas fa-pause';
-                        document.removeEventListener('click', activarConInteraccion);
-                    });
-                };
-                document.addEventListener('click', activarConInteraccion);
-            });
-        });
+        function actualizarBoton(reproduciendo) {
+            if (reproduciendo) {
+                iconoPlay.className = "fa-solid fa-pause";
+                textoReproductor.textContent = "PAUSA";
+            } else {
+                iconoPlay.className = "fa-solid fa-play";
+                textoReproductor.textContent = "MÚSICA";
+            }
+        }
     </script>
+
 </body>
 </html>
