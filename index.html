@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacio de Gaby - Morado Crema</title>
+    <!-- Fuentes elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Hoja de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="xat-space-escenario">
+
+        <!-- UN SOLO CÍRCULO QUE SALE ALEATORIAMENTE -->
+        <div class="contenedor-ondas">
+            <div class="onda-unica"></div>
+        </div>
+
+        <!-- PRIMERA MARIPOSA (Vuela de Izquierda a Derecha) -->
+        <div class="contenedor-mariposa mariposa-izq-der">
+            <div class="mariposa-perfil-derecha">
+                <div class="cuerpo-mariposa-der">
+                    <div class="antena antena-trasera-der"></div>
+                    <div class="antena antena-delantera-der"></div>
+                </div>
+                <div class="ala ala-trasera-der"></div>
+                <div class="ala ala-delantera-der"></div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA MARIPOSA (Vuela de Derecha a Izquierda - Corregida) -->
+        <div class="contenedor-mariposa mariposa-der-izq">
+            <div class="mariposa-perfil-izquierda">
+                <div class="cuerpo-mariposa-izq">
+                    <div class="antena antena-trasera-izq"></div>
+                    <div class="antena antena-delantera-izq"></div>
+                </div>
+                <div class="ala ala-trasera-izq"></div>
+                <div class="ala ala-delantera-izq"></div>
+            </div>
+        </div>
+
+        <!-- BLOQUE CENTRAL -->
+        <div class="contenedor-nombre">
+            <h1 class="texto-caligrafico-glow">Gaby</h1>
+            
+            <div class="xat-divider">
+                <div class="xat-heart"></div>
+            </div>
+            
+            <!-- Reproductor estilo cristal -->
+            <div class="reproductor-bajo-nombre">
+                <button id="btn-reproductor" class="reproductor-lindo">
+                    <i id="icono-reproductor" class="fas fa-play"></i>
+                    <span id="texto-reproductor">MÚSICA</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- AUDIO DE FONDO -->
+        <audio id="musica-fondo" src="cancion.mp3" loop></audio>
+
+    </div>
+
+    <script>
+        // Lógica del reproductor
+        const musica = document.getElementById('musica-fondo');
+        const boton = document.getElementById('btn-reproductor');
+        const icono = document.getElementById('icono-reproductor');
+
+        function alternarMusica() {
+            if (musica.paused) {
+                musica.play().then(() => {
+                    icono.className = 'fas fa-pause';
+                }).catch(error => console.log("Interacción requerida"));
+            } else {
+                musica.pause();
+                icono.className = 'fas fa-play';
+            }
+        }
+
+        boton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            alternarMusica();
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            musica.play().then(() => {
+                icono.className = 'fas fa-pause';
+            }).catch(() => {
+                const activarConInteraccion = () => {
+                    musica.play().then(() => {
+                        icono.className = 'fas fa-pause';
+                        document.removeEventListener('click', activarConInteraccion);
+                    });
+                };
+                document.addEventListener('click', activarConInteraccion);
+            });
+        });
+    </script>
+</body>
+</html>
